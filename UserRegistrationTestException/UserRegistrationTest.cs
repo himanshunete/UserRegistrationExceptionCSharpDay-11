@@ -12,6 +12,8 @@ namespace UserRegistrationTestException
         string emailPattern = "^[0-9a-zA-Z]+([._+-]?[0-9a-zA-Z]+)*@[0-9A-Za-z]+.([c]{1}[o]{1}[m]{1})*([n]{1}[e]{1}[t]{1})*[,]*([.][a]{1}[u]{1})*([.][c]{1}[o]{1}[m]{1})*$";
         string mobileNumberPattern = "^[9]{1}[1]{1}[ ][0-9]{10}$";
         string passwordPattern = "^[A-Z]{1}[a-zA-Z]{7,}([0-9]+)[@#$%^&*+-_]{1}$";
+
+
         /// <summary>
         /// FirstName Custom Exception
         /// </summary>
