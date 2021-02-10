@@ -67,10 +67,10 @@ namespace UserRegistrationTestException
         /// </summary>
         /// <param name="patternEmail"></param>
         /// <returns></returns>
-        public string EmailAddress(string[] patternEmail)
+        public string EmailAddress(string patternEmail)
         {
             Regex regex = new Regex(emailPattern);
-            var result = regex.Match(patternEmail[1]);
+            var result = regex.Match(patternEmail);
             try
             {
 

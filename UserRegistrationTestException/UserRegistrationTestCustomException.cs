@@ -17,6 +17,7 @@ namespace UserRegistrationTestException
 
 
 
+
         }
         public UserRegistrationTestCustomException(ExceptionType type, string message) : base(message)
         {
