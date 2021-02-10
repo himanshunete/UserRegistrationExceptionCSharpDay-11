@@ -11,6 +11,7 @@ namespace UserRegistrationTestException
         string lastNamePattern = "^[A-Z]{1}[a-z]{2,}$";
         string emailPattern = "^[0-9a-zA-Z]+([._+-]?[0-9a-zA-Z]+)*@[0-9A-Za-z]+.([c]{1}[o]{1}[m]{1})*([n]{1}[e]{1}[t]{1})*[,]*([.][a]{1}[u]{1})*([.][c]{1}[o]{1}[m]{1})*$";
         string mobileNumberPattern = "^[9]{1}[1]{1}[ ][0-9]{10}$";
+        string passwordPattern = "^[A-Z]{1}[a-zA-Z]{7,}([0-9]+)[@#$%^&*+-_]{1}$";
         /// <summary>
         /// FirstName Custom Exception
         /// </summary>
@@ -87,6 +88,32 @@ namespace UserRegistrationTestException
         }
 
         /// <summary>
+        /// Password Custom Exception
+        /// </summary>
+        /// <param name="patternPassword"></param>
+        /// <returns></returns>
+        public string Password(string[] patternPassword)
+        {
+            Regex regex = new Regex(passwordPattern);
+            var result = regex.Match(patternPassword[1]);
+            try
+            {
+
+
+                if (!result.Success)
+                {
+                    throw new UserRegistrationTestCustomException(UserRegistrationTestCustomException.ExceptionType.PASSWORD_MESSAGE, "Password is not valid");
+                }
+                return "Password is valid";
+            }
+            catch
+            {
+                throw new UserRegistrationTestCustomException(UserRegistrationTestCustomException.ExceptionType.PASSWORD_MESSAGE, "Password is not valid");
+            }
+        }
+
+
+        /// <summary>
         /// Mobile Number Custom Exception
         /// </summary>
         /// <param name="patternMobileNumber"></param>
@@ -94,7 +121,7 @@ namespace UserRegistrationTestException
         public string MobileNumber(string[] patternMobileNumber)
         {
             Regex regex = new Regex(mobileNumberPattern);
-            var result = regex.Match(patternMobileNumber[1]);
+            var result = regex.Match(patternMobileNumber[0]);
             try
             {
 
@@ -110,8 +137,6 @@ namespace UserRegistrationTestException
                 throw new UserRegistrationTestCustomException(UserRegistrationTestCustomException.ExceptionType.MOBILE_NUMBER_MESSAGE, "Mobile Number is not valid");
             }
         }
-
-
 
     }
 }

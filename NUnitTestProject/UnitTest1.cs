@@ -84,6 +84,23 @@ namespace NUnitTestProject
             }
         }
 
+        /// <summary>
+        /// TC-5 Throw Custom Exception for Invalid Password
+        /// </summary>
+        [Test]
+        public void Given_Password_Expecting_ThrowCustomException()
+        {
+            string[] patternPassword = { "Himanshunete18$", "Vineetkdwe9##" };
+            string actual = " ";
+            try
+            {
+                actual = userRegistration.Password(patternPassword);
+            }
+            catch (UserRegistrationTestCustomException exception)
+            {
+                Assert.AreEqual("Password is not valid", exception.Message);
+            }
+        }
 
 
 
