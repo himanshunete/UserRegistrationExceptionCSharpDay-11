@@ -12,8 +12,11 @@ namespace NUnitTestProject
             userRegistration = new UserRegistrationTest();
         }
 
+        /// <summary>
+        /// TC-1 Throw Custom Exception for Invalid FirstName
+        /// </summary>
         [Test]
-        public void Given_FirstName_Expecting_TrueResult()
+        public void Given_FirstName_Expecting_ThrowCustomException()
         {
             string[] patternFirstName = { "Himanshu", "vineet" };
             string actual = " ";
@@ -26,9 +29,27 @@ namespace NUnitTestProject
                 Assert.AreEqual("FirstName is not valid", exception.Message);
             }
         }
-       
+
+        /// <summary>
+        /// TC-2 Throw Custom Exception for Invalid LastName
+        /// </summary>
+        [Test]
+        public void Given_LastName_Expecting_ThrowCustomException()
+        {
+            string[] patternLastName = { "Nete", "kadwe" };
+            string actual = " ";
+            try
+            {
+                actual = userRegistration.LastName(patternLastName);
+            }
+            catch (UserRegistrationTestCustomException exception)
+            {
+                Assert.AreEqual("LastName is not valid", exception.Message);
+            }
+        }
 
 
-           
+
+
     }
 }
