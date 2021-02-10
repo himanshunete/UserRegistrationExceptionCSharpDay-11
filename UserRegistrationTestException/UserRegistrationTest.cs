@@ -9,6 +9,7 @@ namespace UserRegistrationTestException
     {
         string firstNamePattern = "^[A-Z]{1}[a-z]{2,}$";
         string lastNamePattern = "^[A-Z]{1}[a-z]{2,}$";
+        string emailPattern = "^[0-9a-zA-Z]+([._+-]?[0-9a-zA-Z]+)*@[0-9A-Za-z]+.([c]{1}[o]{1}[m]{1})*([n]{1}[e]{1}[t]{1})*[,]*([.][a]{1}[u]{1})*([.][c]{1}[o]{1}[m]{1})*$";
 
         /// <summary>
         /// FirstName Custom Exception
@@ -38,7 +39,7 @@ namespace UserRegistrationTestException
         /// <summary>
         /// LastName Custom Exception
         /// </summary>
-        /// <param name="patternFirstName"></param>
+        /// <param name="patternLastName"></param>
         /// <returns></returns>
         public string LastName(string[] patternLastName)
         {
@@ -57,6 +58,31 @@ namespace UserRegistrationTestException
             catch
             {
                 throw new UserRegistrationTestCustomException(UserRegistrationTestCustomException.ExceptionType.LAST_NAME_MESSAGE, "LastName is not valid");
+            }
+        }
+
+        /// <summary>
+        /// Email Custom Exception
+        /// </summary>
+        /// <param name="patternEmail"></param>
+        /// <returns></returns>
+        public string EmailAddress(string[] patternEmail)
+        {
+            Regex regex = new Regex(emailPattern);
+            var result = regex.Match(patternEmail[1]);
+            try
+            {
+
+
+                if (!result.Success)
+                {
+                    throw new UserRegistrationTestCustomException(UserRegistrationTestCustomException.ExceptionType.EMAIL_MESSAGE, "Email is not valid");
+                }
+                return "Email is valid";
+            }
+            catch
+            {
+                throw new UserRegistrationTestCustomException(UserRegistrationTestCustomException.ExceptionType.EMAIL_MESSAGE, "Email is not valid");
             }
         }
 

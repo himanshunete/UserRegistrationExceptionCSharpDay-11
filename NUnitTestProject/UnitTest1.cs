@@ -48,6 +48,24 @@ namespace NUnitTestProject
             }
         }
 
+        /// <summary>
+        /// TC-3 Throw Custom Exception for Invalid Email
+        /// </summary>
+        [Test]
+        public void Given_Email_Expecting_ThrowCustomException()
+        {
+            string[] patternEmail = { "himnshuneteh@gmil.com", "vineetkdwe@gmil.com" };
+            string actual = " ";
+            try
+            {
+                actual = userRegistration.EmailAddress(patternEmail);
+            }
+            catch (UserRegistrationTestCustomException exception)
+            {
+                Assert.AreEqual("Email is not valid", exception.Message);
+            }
+        }
+
 
 
 
