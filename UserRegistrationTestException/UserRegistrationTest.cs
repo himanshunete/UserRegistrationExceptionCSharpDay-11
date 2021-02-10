@@ -14,6 +14,7 @@ namespace UserRegistrationTestException
             var result = regex.Match(patternFirstName[1]);
             try
             {
+
                 if (!result.Success)
                 {
                     throw new UserRegistrationTestCustomException(UserRegistrationTestCustomException.ExceptionType.FIRST_NAME_MESSAGE, "FirstName is not valid");
