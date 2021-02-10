@@ -10,7 +10,7 @@ namespace UserRegistrationTestException
         string firstNamePattern = "^[A-Z]{1}[a-z]{2,}$";
         string lastNamePattern = "^[A-Z]{1}[a-z]{2,}$";
         string emailPattern = "^[0-9a-zA-Z]+([._+-]?[0-9a-zA-Z]+)*@[0-9A-Za-z]+.([c]{1}[o]{1}[m]{1})*([n]{1}[e]{1}[t]{1})*[,]*([.][a]{1}[u]{1})*([.][c]{1}[o]{1}[m]{1})*$";
-
+        string mobileNumberPattern = "^[9]{1}[1]{1}[ ][0-9]{10}$";
         /// <summary>
         /// FirstName Custom Exception
         /// </summary>
@@ -83,6 +83,31 @@ namespace UserRegistrationTestException
             catch
             {
                 throw new UserRegistrationTestCustomException(UserRegistrationTestCustomException.ExceptionType.EMAIL_MESSAGE, "Email is not valid");
+            }
+        }
+
+        /// <summary>
+        /// Mobile Number Custom Exception
+        /// </summary>
+        /// <param name="patternMobileNumber"></param>
+        /// <returns></returns>
+        public string MobileNumber(string[] patternMobileNumber)
+        {
+            Regex regex = new Regex(mobileNumberPattern);
+            var result = regex.Match(patternMobileNumber[1]);
+            try
+            {
+
+
+                if (!result.Success)
+                {
+                    throw new UserRegistrationTestCustomException(UserRegistrationTestCustomException.ExceptionType.MOBILE_NUMBER_MESSAGE, "Mobile Number is not valid");
+                }
+                return "Mobile Number is valid";
+            }
+            catch
+            {
+                throw new UserRegistrationTestCustomException(UserRegistrationTestCustomException.ExceptionType.MOBILE_NUMBER_MESSAGE, "Mobile Number is not valid");
             }
         }
 

@@ -12,6 +12,7 @@ namespace UserRegistrationTestException
             FIRST_NAME_MESSAGE,
             LAST_NAME_MESSAGE,
             EMAIL_MESSAGE,
+            MOBILE_NUMBER_MESSAGE,
 
 
 

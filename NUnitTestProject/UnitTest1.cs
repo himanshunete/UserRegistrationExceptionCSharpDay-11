@@ -66,6 +66,24 @@ namespace NUnitTestProject
             }
         }
 
+        /// <summary>
+        /// TC-4 Throw Custom Exception for Invalid Mobile Number
+        /// </summary>
+        [Test]
+        public void Given_MobileNumber_Expecting_ThrowCustomException()
+        {
+            string[] patternMobileNumber = { "91 8803829504", "7378138447" };
+            string actual = " ";
+            try
+            {
+                actual = userRegistration.MobileNumber(patternMobileNumber);
+            }
+            catch (UserRegistrationTestCustomException exception)
+            {
+                Assert.AreEqual("Mobile Number is not valid", exception.Message);
+            }
+        }
+
 
 
 
