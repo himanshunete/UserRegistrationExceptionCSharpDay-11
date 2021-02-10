@@ -10,7 +10,14 @@ namespace UserRegistrationTestException
         public enum ExceptionType
         {
             FIRST_NAME_MESSAGE,
-            
+            LAST_NAME_MESSAGE,
+            EMAIL_MESSAGE,
+            MOBILE_NUMBER_MESSAGE,
+            PASSWORD_MESSAGE,
+
+
+
+
         }
         public UserRegistrationTestCustomException(ExceptionType type, string message) : base(message)
         {
